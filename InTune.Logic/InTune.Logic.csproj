@@ -51,6 +51,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="StringCipher.cs" />
+    <Compile Include="ErrorLogDao.cs" />
     <Compile Include="UserDao.cs" />
     <Compile Include="ContactDao.cs">
       <SubType>Code</SubType>

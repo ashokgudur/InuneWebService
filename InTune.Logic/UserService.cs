@@ -32,11 +32,24 @@ namespace InTune.Logic
             {
                 var dao = new UserDao(dbc);
                 var user = dao.ReadUserByEmail(email);
-                if (user != null)
-                    Emailer.SendMail(createMessage(email, user.Password));
-                else
+                if (user == null)
                     throw new Exception("User with this email address was not found.");
+                try
+                {
+                    Emailer.SendMail(createMessage(email, user.Password));
+                }
+                catch (Exception ex)
+                {
+                    logError(dbc, ex.ToString());
+                    throw ex;
+                }
             }
+        }
+
+        private void logError(DbContext dbc, string message)
+        {
+            var logger = new ErrorLogDao(dbc);
+            logger.LogError(message);
         }
 
         private EmailMessage createMessage(string email, string password)
