@@ -1,0 +1,5 @@
+C:\Users\gw2ks\Documents\Visual Studio 2017\Projects\Intune\InTune\InTune\InTune.Domain\bin\Debug\InTune.Domain.dll
+C:\Users\gw2ks\Documents\Visual Studio 2017\Projects\Intune\InTune\InTune\InTune.Domain\bin\Debug\InTune.Domain.pdb
+C:\Users\gw2ks\Documents\Visual Studio 2017\Projects\Intune\InTune\InTune\InTune.Domain\obj\Debug\InTune.Domain.csprojResolveAssemblyReference.cache
+C:\Users\gw2ks\Documents\Visual Studio 2017\Projects\Intune\InTune\InTune\InTune.Domain\obj\Debug\InTune.Domain.dll
+C:\Users\gw2ks\Documents\Visual Studio 2017\Projects\Intune\InTune\InTune\InTune.Domain\obj\Debug\InTune.Domain.pdb
