@@ -49,7 +49,8 @@ namespace InTune.Controllers
             }
             catch (Exception ex)
             {
-                return Request.CreateResponse(HttpStatusCode.OK, ex);
+                throw ex;
+                //return Request.CreateResponse(HttpStatusCode.OK, ex);
                 //throw new HttpRequestException(
                 //    string.Format("{0}. Cannot send your password.", ex.Message), ex);
             }
