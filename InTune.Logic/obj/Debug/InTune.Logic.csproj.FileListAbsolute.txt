@@ -7,3 +7,12 @@ C:\Users\gw2ks\Documents\Visual Studio 2017\Projects\Intune\InTune\InTune\InTune
 C:\Users\gw2ks\Documents\Visual Studio 2017\Projects\Intune\InTune\InTune\InTune.Logic\obj\Debug\InTune.Logic.csprojResolveAssemblyReference.cache
 C:\Users\gw2ks\Documents\Visual Studio 2017\Projects\Intune\InTune\InTune\InTune.Logic\obj\Debug\InTune.Logic.dll
 C:\Users\gw2ks\Documents\Visual Studio 2017\Projects\Intune\InTune\InTune\InTune.Logic\obj\Debug\InTune.Logic.pdb
+C:\Users\gw2ks\Source\Repos\InuneWebService\InTune.Logic\bin\Debug\InTune.Logic.dll
+C:\Users\gw2ks\Source\Repos\InuneWebService\InTune.Logic\bin\Debug\InTune.Logic.pdb
+C:\Users\gw2ks\Source\Repos\InuneWebService\InTune.Logic\bin\Debug\InTune.Data.dll
+C:\Users\gw2ks\Source\Repos\InuneWebService\InTune.Logic\bin\Debug\InTune.Domain.dll
+C:\Users\gw2ks\Source\Repos\InuneWebService\InTune.Logic\bin\Debug\InTune.Data.pdb
+C:\Users\gw2ks\Source\Repos\InuneWebService\InTune.Logic\bin\Debug\InTune.Domain.pdb
+C:\Users\gw2ks\Source\Repos\InuneWebService\InTune.Logic\obj\Debug\InTune.Logic.csprojResolveAssemblyReference.cache
+C:\Users\gw2ks\Source\Repos\InuneWebService\InTune.Logic\obj\Debug\InTune.Logic.dll
+C:\Users\gw2ks\Source\Repos\InuneWebService\InTune.Logic\obj\Debug\InTune.Logic.pdb
