@@ -35,7 +35,7 @@ namespace InTune.Logic
                 if (user != null)
                     Emailer.SendMail(createMessage(email, user.Password));
                 else
-                    throw new Exception("User with this email address not found.");
+                    throw new Exception("User with this email address was not found.");
             }
         }
 
