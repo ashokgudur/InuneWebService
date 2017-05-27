@@ -44,6 +44,15 @@ namespace InTune.Controllers
             }
         }
 
+        [Route("api/contact/contact")]
+        [HttpGet]
+        public Contact GetContact(int contactId)
+        {
+            var cs = new ContactService();
+            var result = cs.ReadContact(contactId);
+            return result;
+        }
+
         [Route("api/contact/allcontacts")]
         [HttpGet]
         public IEnumerable<Contact> GetAllContacts(int userId)

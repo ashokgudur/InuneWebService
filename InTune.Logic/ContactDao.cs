@@ -85,6 +85,30 @@ namespace InTune.Logic
             cmd.ExecuteNonQuery();
         }
 
+        public Contact ReadContact(int contactId)
+        {
+            var sql = string.Format("select * from Contact c where c.id={0}", contactId);
+            using (var rdr = _dbc.ExecuteReader(sql))
+            {
+                if (rdr.Read())
+                {
+                    return new Contact
+                    {
+                        Id = Convert.ToInt32(rdr["id"]),
+                        UserId = Convert.ToInt32(rdr["UserId"]),
+                        Name = rdr["Name"].ToString(),
+                        Email = rdr["Email"].ToString(),
+                        Mobile = rdr["Mobile"].ToString(),
+                        Address = rdr["Address"].ToString(),
+                        CreatedOn = Convert.ToDateTime(rdr["CreatedOn"]),
+                        HasUnreadComments = Convert.ToBoolean(rdr["HasUnreadComments"]),
+                    };
+                }
+            }
+
+            return new Contact();
+        }
+
         public IList<Contact> ReadContacts(int userId)
         {
             var result = new List<Contact>();

@@ -50,5 +50,15 @@ namespace InTune.Logic
                 return dao.ReadContacts(userId);
             }
         }
+
+        public Contact ReadContact(int contactId)
+        {
+            using (DbContext dbc = new DbContext())
+            {
+                var dao = new ContactDao(dbc);
+                return dao.ReadContact(contactId);
+            }
+        }
+
     }
 }
