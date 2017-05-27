@@ -28,6 +28,22 @@ namespace InTune.Logic
             }
         }
 
+        public void UpdateAccount(Account account)
+        {
+            if (!account.IsValid())
+                throw new Exception("Account is not valid. Check Name is entered");
+
+            using (DbContext dbc = new DbContext())
+            {
+                var dao = new AccountDao(dbc, account);
+
+                if (dao.IsAccountExists())
+                    throw new Exception("Account already exists.");
+
+                dao.UpdateAccount();
+            }
+        }
+
         public void DeleteAccountUser(AccountContactUser acu)
         {
             using (DbContext dbc = new DbContext())

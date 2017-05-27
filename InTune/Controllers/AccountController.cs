@@ -28,6 +28,22 @@ namespace InTune.Controllers
             }
         }
 
+        [Route("api/account/update")]
+        [HttpPost]
+        public HttpResponseMessage UpdateAccount(Account account)
+        {
+            try
+            {
+                var a = new AccountService();
+                a.UpdateAccount(account);
+                return Request.CreateResponse(HttpStatusCode.OK, account);
+            }
+            catch (Exception ex)
+            {
+                throw new HttpRequestException("Cannot update this account", ex);
+            }
+        }
+
         [Route("api/account/allaccounts")]
         [HttpGet]
         public IEnumerable<Account> GetAllAccounts(int userId, int contactId)

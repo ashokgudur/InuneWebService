@@ -78,6 +78,15 @@ namespace InTune.Logic
             AddAccountUser(acu);
         }
 
+        public void UpdateAccount()
+        {
+            var sql = "update Account set name=@accountName where id=@accountId";
+            var cmd = _dbc.CreateCommand(sql);
+            _dbc.AddParameterWithValue(cmd, "@accountId", _account.Id);
+            _dbc.AddParameterWithValue(cmd, "@accountName", _account.Name);
+            cmd.ExecuteNonQuery();
+        }
+
         public void AddAccountUser(AccountContactUser acu)
         {
             var sql = "insert into AccountUser (accountId, userId, role, addedOn) values (@accountId, @userId, @role, @addedOn)";
