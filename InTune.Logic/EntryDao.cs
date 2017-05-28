@@ -58,7 +58,7 @@ namespace InTune.Logic
                     {
                         Id = Convert.ToInt32(rdr["id"]),
                         UserId = Convert.ToInt32(rdr["UserId"]),
-                        AccountId = Convert.ToInt32(rdr["AccountId"]),,
+                        AccountId = Convert.ToInt32(rdr["AccountId"]),
                         TxnType = (TxnType)Convert.ToInt32(rdr["TxnType"]),
                         Notes = rdr["Notes"].ToString(),
                         TxnDate = Convert.ToDateTime(rdr["TxnDate"]),
