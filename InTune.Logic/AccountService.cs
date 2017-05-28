@@ -217,6 +217,15 @@ namespace InTune.Logic
             }
         }
 
+        public Entry ReadAccountEntry(int entryId)
+        {
+            using (DbContext dbc = new DbContext())
+            {
+                var dao = new EntryDao(dbc);
+                return dao.ReadAccountEntry(entryId);
+            }
+        }
+
         public IList<Entry> ReadAccountEntries(int accountId)
         {
             using (DbContext dbc = new DbContext())

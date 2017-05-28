@@ -144,6 +144,15 @@ namespace InTune.Controllers
             }
         }
 
+        [Route("api/account/entry")]
+        [HttpGet]
+        public Entry GetAccountEntry(int entryId)
+        {
+            var a = new AccountService();
+            var result = a.ReadAccountEntry(entryId);
+            return result;
+        }
+
         [Route("api/account/entries")]
         [HttpGet]
         public IEnumerable<Entry> GetAccountEntries(int accountId)

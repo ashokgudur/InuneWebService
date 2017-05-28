@@ -46,6 +46,32 @@ namespace InTune.Logic
             cmd.ExecuteNonQuery();
         }
 
+        public Entry ReadAccountEntry(int entryId)
+        {
+            var sql = string.Format("select * from Entry where id={0}", entryId);
+            using (var rdr = _dbc.ExecuteReader(sql))
+            {
+
+                if (rdr.Read())
+                {
+                    return new Entry
+                    {
+                        Id = Convert.ToInt32(rdr["id"]),
+                        UserId = Convert.ToInt32(rdr["UserId"]),
+                        AccountId = Convert.ToInt32(rdr["AccountId"]),,
+                        TxnType = (TxnType)Convert.ToInt32(rdr["TxnType"]),
+                        Notes = rdr["Notes"].ToString(),
+                        TxnDate = Convert.ToDateTime(rdr["TxnDate"]),
+                        Quantity = Convert.ToDouble(rdr["Quantity"]),
+                        Amount = Convert.ToDecimal(rdr["Amount"]),
+                        VoidId = Convert.ToInt32(rdr["VoidId"]),
+                    };
+                }
+            }
+
+            return new Entry();
+        }
+
         public IList<Entry> ReadAccountEntries(int accountId)
         {
             var result = new List<Entry>();
