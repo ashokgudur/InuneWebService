@@ -50,7 +50,7 @@ namespace InTune.Logic
 
         public bool IsAccountExists()
         {
-            var sql = "select count(a.Name) from Account a inner join accountUser au on a.id=au.accountId where a.Name=@accountName and au.userId=@userId";
+            var sql = "select count(a.Name) from Account a inner join accountUser au on a.id=au.accountId where a.Name=@accountName and au.userId=@userId COLLATE Latin1_General_CS_AS";
             var cmd = _dbc.CreateCommand(sql);
             _dbc.AddParameterWithValue(cmd, "@accountName", _account.Name.Trim());
             _dbc.AddParameterWithValue(cmd, "@userId", _account.UserId);
