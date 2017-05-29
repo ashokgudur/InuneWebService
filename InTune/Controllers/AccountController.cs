@@ -110,6 +110,15 @@ namespace InTune.Controllers
             return result;
         }
 
+        [Route("api/account/account/sharedusers")]
+        [HttpGet]
+        public IEnumerable<AccountUser> GetAccountSharedUsers(int accountId)
+        {
+            var a = new AccountService();
+            var result = a.ReadAccountSharedUsers(accountId);
+            return result;
+        }
+
         [Route("api/account/account/users")]
         [HttpGet]
         public int[] GetAccountUsers(int accountId, UserAccountRole role)

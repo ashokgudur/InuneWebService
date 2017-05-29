@@ -181,6 +181,15 @@ namespace InTune.Logic
             }
         }
 
+        public IList<AccountUser> ReadAccountSharedUsers(int accountId)
+        {
+            using (DbContext dbc = new DbContext())
+            {
+                var dao = new AccountDao(dbc);
+                return dao.ReadAccountSharedUsers(accountId);
+            }
+        }
+
         public int[] ReadAccountUsers(int accountId, UserAccountRole role)
         {
             using (DbContext dbc = new DbContext())

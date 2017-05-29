@@ -6,6 +6,12 @@ using System.Threading.Tasks;
 
 namespace InTune.Domain
 {
+    public class AccountUser
+    {
+        public int UserId { get; set; }
+        public UserAccountRole Role { get; set; }
+    }
+
     public class AccountContactUser
     {
         public int Id { get; set; }

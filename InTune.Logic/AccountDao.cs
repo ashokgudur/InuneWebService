@@ -117,10 +117,31 @@ namespace InTune.Logic
             _dbc.ExecuteCommand(sql);
         }
 
+        public IList<AccountUser> ReadAccountSharedUsers(int accountId)
+        {
+            var result = new List<AccountUser>();
+            var sql = string.Format("select userId, role from AccountUser where accountId={0}", accountId);
+            using (var rdr = _dbc.ExecuteReader(sql))
+            {
+                while (rdr.Read())
+                    result.Add(
+                        new AccountUser
+                        {
+                            UserId = Convert.ToInt32(rdr["userId"]),
+                            Role = (UserAccountRole)Convert.ToInt32(rdr["role"])
+                        });
+            };
+
+            return result;
+        }
+
         public int[] ReadAccountUsers(int accountId, UserAccountRole role)
         {
             var result = new List<int>();
-            var sql = string.Format("select userId from AccountUser where accountId={0} and role={1}", accountId, (int)role);
+            var sql = string.Format("select userId from AccountUser where accountId={0}", accountId);
+            if ((int)role != -1)
+                sql = string.Format("{0} and role={1}", sql, (int)role);
+
             var rdr = _dbc.ExecuteReader(sql);
             while (rdr.Read())
                 result.Add(Convert.ToInt32(rdr["userId"]));

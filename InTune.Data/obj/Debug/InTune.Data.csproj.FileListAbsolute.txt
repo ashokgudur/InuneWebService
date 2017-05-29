@@ -5,3 +5,10 @@ C:\Users\gw2ks\Documents\Visual Studio 2017\Projects\Intune\InTune\InTune\InTune
 C:\Users\gw2ks\Documents\Visual Studio 2017\Projects\Intune\InTune\InTune\InTune.Data\obj\Debug\InTune.Data.csprojResolveAssemblyReference.cache
 C:\Users\gw2ks\Documents\Visual Studio 2017\Projects\Intune\InTune\InTune\InTune.Data\obj\Debug\InTune.Data.dll
 C:\Users\gw2ks\Documents\Visual Studio 2017\Projects\Intune\InTune\InTune\InTune.Data\obj\Debug\InTune.Data.pdb
+C:\Users\gw2ks\Source\Repos\InuneWebService\InTune.Data\bin\Debug\InTune.Data.dll
+C:\Users\gw2ks\Source\Repos\InuneWebService\InTune.Data\bin\Debug\InTune.Data.pdb
+C:\Users\gw2ks\Source\Repos\InuneWebService\InTune.Data\bin\Debug\InTune.Domain.dll
+C:\Users\gw2ks\Source\Repos\InuneWebService\InTune.Data\bin\Debug\InTune.Domain.pdb
+C:\Users\gw2ks\Source\Repos\InuneWebService\InTune.Data\obj\Debug\InTune.Data.csprojResolveAssemblyReference.cache
+C:\Users\gw2ks\Source\Repos\InuneWebService\InTune.Data\obj\Debug\InTune.Data.dll
+C:\Users\gw2ks\Source\Repos\InuneWebService\InTune.Data\obj\Debug\InTune.Data.pdb
