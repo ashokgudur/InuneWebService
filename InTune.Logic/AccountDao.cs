@@ -121,8 +121,8 @@ namespace InTune.Logic
         {
             var result = new List<Contact>();
             var sql = string.Format("select c.id, c.name, u.id [uid] " +
-                    "from Contact c left join [User] u on c.email=u.email " +
-                    "where c.userId={0} ", userId);
+                                    "from Contact c left join [User] u on c.email=u.email " +
+                                    "where c.userId={0} ", userId);
 
             using (var rdr = _dbc.ExecuteReader(sql))
             {
@@ -132,7 +132,7 @@ namespace InTune.Logic
                         {
                             Id = Convert.ToInt32(rdr["id"]),
                             Name = rdr["name"].ToString(),
-                            ContactUserId = Convert.ToInt32(rdr["uid"]),
+                            ContactUserId = rdr["uid"] == DBNull.Value ? 0 : Convert.ToInt32(rdr["uid"]),
                         });
             };
 
