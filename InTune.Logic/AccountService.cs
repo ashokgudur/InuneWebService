@@ -44,6 +44,17 @@ namespace InTune.Logic
             }
         }
 
+        public void AddAccountSharing(int accountId, UserAccountShareRole[] accountShares)
+        {
+            using (DbContext dbc = new DbContext())
+            {
+                dbc.BeginTransaction();
+                var adao = new AccountDao(dbc);
+                adao.AddAccountSharing(accountId, accountShares);
+                dbc.Commit();
+            }
+        }
+
         public void DeleteAccountUser(AccountContactUser acu)
         {
             using (DbContext dbc = new DbContext())

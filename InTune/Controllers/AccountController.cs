@@ -69,6 +69,22 @@ namespace InTune.Controllers
             }
         }
 
+        [Route("api/account/sharing")]
+        [HttpPost]
+        public HttpResponseMessage AddAccountSharing(int accountId, UserAccountShareRole[] accountShares)
+        {
+            try
+            {
+                var a = new AccountService();
+                a.AddAccountSharing(accountId, accountShares);
+                return Request.CreateResponse(HttpStatusCode.OK);
+            }
+            catch (Exception ex)
+            {
+                throw new HttpRequestException("Cannot remove account user", ex);
+            }
+        }
+
         [Route("api/account/deleteuser")]
         [HttpPost]
         public HttpResponseMessage DeleteAccountUser(AccountContactUser acu)

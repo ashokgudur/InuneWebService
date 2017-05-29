@@ -1,11 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace InTune.Domain
+﻿namespace InTune.Domain
 {
+    public class UserAccountShareRole
+    {
+        public int UserId { get; set; }
+        public UserAccountRole Role { get; set; }
+
+        public UserAccountShareRole() { }
+    }
+
     public class AccountContactUser
     {
         public int Id { get; set; }
@@ -15,8 +17,6 @@ namespace InTune.Domain
         public UserAccountRole Role { get; set; }
         public int ContactUserId { get; set; }
 
-        public AccountContactUser()
-        {
-        }
+        public AccountContactUser() { }
     }
 }

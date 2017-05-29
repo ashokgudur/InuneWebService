@@ -2,6 +2,7 @@
 using InTune.Domain;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -103,6 +104,33 @@ namespace InTune.Logic
         {
             var sql = string.Format("update AccountUser set Role={0} where userId={1} and accountId={2}", (int)acu.Role, acu.UserId, acu.AccountId);
             _dbc.ExecuteCommand(sql);
+        }
+
+        public void AddAccountSharing(int accountId, UserAccountShareRole[] accountShares)
+        {
+            var sql = string.Format("delete from AccountUser " +
+                                    "where accountId={0} and [Role] > 0", accountId);
+            _dbc.ExecuteCommand(sql);
+
+            sql = "insert into AccountUser (accountId, userId, role, addedOn) " +
+                   "values (@accountId, @userId, @role, @addedOn)";
+
+            var cmd = _dbc.CreateCommand(sql);
+            _dbc.AddParameterWithValue(cmd, "@accountId", accountId);
+            _dbc.AddParameterWithValue(cmd, "@userId", null);
+            _dbc.AddParameterWithValue(cmd, "@role", null);
+            _dbc.AddParameterWithValue(cmd, "@addedOn", DateTime.Now);
+
+            foreach (var accountShare in accountShares)
+            {
+                var userIdParam = cmd.Parameters["@userId"] as IDataParameter;
+                userIdParam.Value = accountShare.UserId;
+
+                var roleParam = cmd.Parameters["@role"] as IDataParameter;
+                roleParam.Value = accountShare.Role;
+
+                cmd.ExecuteNonQuery();
+            }
         }
 
         public void DeleteAccountUser(AccountContactUser acu)
