@@ -181,12 +181,12 @@ namespace InTune.Logic
             }
         }
 
-        public IList<AccountUser> ReadAccountSharedUsers(int accountId)
+        public IList<Contact> ReadAccountSharedContacts(int userId, int accountId)
         {
             using (DbContext dbc = new DbContext())
             {
                 var dao = new AccountDao(dbc);
-                return dao.ReadAccountSharedUsers(accountId);
+                return dao.ReadAccountSharedContacts(userId, accountId);
             }
         }
 

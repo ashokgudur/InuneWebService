@@ -18,7 +18,8 @@ namespace InTune.Domain
         public int ContactUserId { get; set; }
         public bool HasComments { get; set; }
         public bool HasUnreadComments { get; set; }
-        
+        public UserAccountRole AccountSharedRole { get; set; }
+
         public Contact()
         {
         }

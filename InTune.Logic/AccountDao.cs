@@ -117,19 +117,38 @@ namespace InTune.Logic
             _dbc.ExecuteCommand(sql);
         }
 
-        public IList<AccountUser> ReadAccountSharedUsers(int accountId)
+        public IList<Contact> ReadAccountSharedContacts(int userId, int accountId)
         {
-            var result = new List<AccountUser>();
-            var sql = string.Format("select userId, role from AccountUser where accountId={0}", accountId);
+            var result = new List<Contact>();
+            var sql = string.Format("select c.id, c.name, u.id [uid] " +
+                    "from Contact c left join [User] u on c.email=u.email " +
+                    "where c.userId={0} ", userId);
+
             using (var rdr = _dbc.ExecuteReader(sql))
             {
                 while (rdr.Read())
                     result.Add(
-                        new AccountUser
+                        new Contact
                         {
-                            UserId = Convert.ToInt32(rdr["userId"]),
-                            Role = (UserAccountRole)Convert.ToInt32(rdr["role"])
+                            Id = Convert.ToInt32(rdr["id"]),
+                            Name = rdr["name"].ToString(),
+                            ContactUserId = Convert.ToInt32(rdr["uid"]),
                         });
+            };
+
+            sql = string.Format("select UserId, [Role] from AccountUser " +
+                                "where AccountId={0} and [Role] > 0", accountId);
+
+            using (var rdr = _dbc.ExecuteReader(sql))
+            {
+                while (rdr.Read())
+                {
+                    var sharedUserId = Convert.ToInt32(rdr["UserId"]);
+                    var sharedRole = (UserAccountRole)Convert.ToInt32(rdr["Role"]);
+                    var contact = result.Where(c => c.ContactUserId == sharedUserId).SingleOrDefault();
+                    if (contact != null)
+                        contact.AccountSharedRole = sharedRole;
+                };
             };
 
             return result;
@@ -138,10 +157,7 @@ namespace InTune.Logic
         public int[] ReadAccountUsers(int accountId, UserAccountRole role)
         {
             var result = new List<int>();
-            var sql = string.Format("select userId from AccountUser where accountId={0}", accountId);
-            if ((int)role != -1)
-                sql = string.Format("{0} and role={1}", sql, (int)role);
-
+            var sql = string.Format("select userId from AccountUser where accountId={0} and role={1}", accountId, (int)role);
             var rdr = _dbc.ExecuteReader(sql);
             while (rdr.Read())
                 result.Add(Convert.ToInt32(rdr["userId"]));
