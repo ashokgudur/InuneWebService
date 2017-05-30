@@ -20,6 +20,7 @@ namespace InTune.Domain
 
         public Entry()
         {
+            TxnDate = DateTime.Today;
         }
 
         public bool IsValid()
