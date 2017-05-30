@@ -1,11 +1,7 @@
 ﻿using InTune.Data;
 using InTune.Domain;
 using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace InTune.Logic
 {
@@ -53,9 +49,11 @@ namespace InTune.Logic
         public void UpdateUser()
         {
             var sql = "update [User] set name=@userName, password=@userPassword, " +
-                "mobile=@userMobile, email=@userEmail, atUserName=@userAtUserName";
+                "mobile=@userMobile, email=@userEmail, atUserName=@userAtUserName " +
+                "where id=@id";
 
             var cmd = _dbc.CreateCommand(sql);
+            _dbc.AddParameterWithValue(cmd, "@id", _user.Id);
             _dbc.AddParameterWithValue(cmd, "@userName", _user.Name);
             _dbc.AddParameterWithValue(cmd, "@userMobile", _user.Mobile);
             _dbc.AddParameterWithValue(cmd, "@userEmail", _user.Email);
