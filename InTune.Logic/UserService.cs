@@ -26,6 +26,22 @@ namespace InTune.Logic
             }
         }
 
+        public void UpdateUser(User user)
+        {
+            if (!user.IsValid())
+                throw new Exception("User is not valid. Check Name, Mobile, Email, AtUserName, and Password is entered");
+
+            using (DbContext dbc = new DbContext())
+            {
+                var dao = new UserDao(dbc, user);
+
+                if (dao.IsUserExists())
+                    throw new Exception("User already exists.");
+
+                dao.UpdateUser();
+            }
+        }
+
         public void ForgotPassword(string email)
         {
             using (DbContext dbc = new DbContext())

@@ -7,3 +7,4 @@ C:\Users\gw2ks\Source\Repos\InuneWebService\InTune.Domain\bin\Debug\InTune.Domai
 C:\Users\gw2ks\Source\Repos\InuneWebService\InTune.Domain\bin\Debug\InTune.Domain.pdb
 C:\Users\gw2ks\Source\Repos\InuneWebService\InTune.Domain\obj\Debug\InTune.Domain.dll
 C:\Users\gw2ks\Source\Repos\InuneWebService\InTune.Domain\obj\Debug\InTune.Domain.pdb
+C:\Users\gw2ks\Source\Repos\InuneWebService\InTune.Domain\obj\Debug\InTune.Domain.csprojResolveAssemblyReference.cache

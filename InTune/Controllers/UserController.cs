@@ -28,6 +28,22 @@ namespace InTune.Controllers
             }
         }
 
+        [Route("api/user/update")]
+        [HttpPost]
+        public HttpResponseMessage UpdateUser(User user)
+        {
+            try
+            {
+                var us = new UserService();
+                us.UpdateUser(user);
+                return Request.CreateResponse(HttpStatusCode.OK, user);
+            }
+            catch (Exception ex)
+            {
+                throw new HttpRequestException("Cannot update the user", ex);
+            }
+        }
+
         [Route("api/user/userbyId")]
         [HttpGet]
         public User GetUserById(int userId)

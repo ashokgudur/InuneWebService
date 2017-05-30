@@ -36,12 +36,32 @@ namespace InTune.Logic
         public bool IsUserExists()
         {
             //TODO: Add additional checks for existence of Mobile, AtUserName also
-            var sql = "select count(id) from [User] where email=@userEmail";
+
+            var sql = "";
+            if (_user.Id == 0)
+                sql = "select count(id) from [User] where email=@userEmail";
+            else
+                sql = string.Format("select count(id) from [User] where email=@userEmail and id<>{0}", _user.Id);
+
             var cmd = _dbc.CreateCommand(sql);
             _dbc.AddParameterWithValue(cmd, "@userEmail", _user.Email.Trim());
             var result = cmd.ExecuteScalar();
             var idCcount = Convert.ToInt32(result);
             return idCcount > 0;
+        }
+
+        public void UpdateUser()
+        {
+            var sql = "update [User] set name=@userName, password=@userPassword, " +
+                "mobile=@userMobile, email=@userEmail, atUserName=@userAtUserName";
+
+            var cmd = _dbc.CreateCommand(sql);
+            _dbc.AddParameterWithValue(cmd, "@userName", _user.Name);
+            _dbc.AddParameterWithValue(cmd, "@userMobile", _user.Mobile);
+            _dbc.AddParameterWithValue(cmd, "@userEmail", _user.Email);
+            _dbc.AddParameterWithValue(cmd, "@userAtUserName", _user.AtUserName);
+            _dbc.AddParameterWithValue(cmd, "@userPassword", _user.Password);
+            cmd.ExecuteNonQuery();
         }
 
         public void InsertUser()
