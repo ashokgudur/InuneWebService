@@ -94,23 +94,21 @@ namespace InTune.Logic
 
         private User readUser(IDbCommand cmd)
         {
-            var rdr = cmd.ExecuteReader();
-            User result = null;
-            if (rdr.Read())
-            {
-                result = new User
-                {
-                    Id = Convert.ToInt32(rdr["id"]),
-                    Name = rdr["Name"].ToString(),
-                    Mobile = rdr["Mobile"].ToString(),
-                    Email = rdr["Email"].ToString(),
-                    AtUserName = rdr["AtUserName"].ToString(),
-                    Password = rdr["Password"].ToString(),
-                    CreatedOn = Convert.ToDateTime(rdr["CreatedOn"])
-                };
-            }
+            var result = new User();
 
-            rdr.Close();
+            using (var rdr = cmd.ExecuteReader())
+            {
+                if (rdr.Read())
+                {
+                    result.Id = Convert.ToInt32(rdr["id"]);
+                    result.Name = rdr["Name"].ToString();
+                    result.Mobile = rdr["Mobile"].ToString();
+                    result.Email = rdr["Email"].ToString();
+                    result.AtUserName = rdr["AtUserName"].ToString();
+                    result.Password = rdr["Password"].ToString();
+                    result.CreatedOn = Convert.ToDateTime(rdr["CreatedOn"]);
+                }
+            }
 
             return result;
         }
