@@ -87,7 +87,13 @@ namespace InTune.Logic
 
         public Contact ReadContact(int contactId)
         {
-            var sql = string.Format("select * from Contact c where c.id={0}", contactId);
+            var sql = string.Format("select c.id, c.userId, c.name, c.email, c.mobile, c.address, " +
+                                    "c.createdOn, c.hasUnreadComments, u.id[uid], count(cc.id) comments " +
+                                    "from Contact c left join[User] u on c.email = u.email " +
+                                    "left join ContactComment cc on u.id = cc.byUserId or u.id = cc.toUserId " +
+                                    "where c.Id = {0} group by c.id, c.userId, c.name, c.email, c.mobile, " +
+                                    "c.address, c.createdOn, c.hasUnreadComments, u.id", contactId);
+
             using (var rdr = _dbc.ExecuteReader(sql))
             {
                 if (rdr.Read())
@@ -101,6 +107,8 @@ namespace InTune.Logic
                         Mobile = rdr["Mobile"].ToString(),
                         Address = rdr["Address"].ToString(),
                         CreatedOn = Convert.ToDateTime(rdr["CreatedOn"]),
+                        ContactUserId = rdr["uid"] is DBNull ? 0 : Convert.ToInt32(rdr["uid"]),
+                        HasComments = Convert.ToInt32(rdr["comments"]) > 0,
                         HasUnreadComments = Convert.ToBoolean(rdr["HasUnreadComments"]),
                     };
                 }

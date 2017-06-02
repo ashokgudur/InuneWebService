@@ -61,7 +61,7 @@ namespace InTune.Logic
                 //dbc.BeginTransaction();
                 var dao = new CommentDao(dbc);
                 var result = dao.ReadContactComments(byUserId, toUserId);
-                //dao.MakeContactCommentsRead(byUserId, toUserId);
+                //dao.MarkAsContactCommentsRead(byUserId, toUserId);
                 //dbc.Commit();
                 return result;
             }
