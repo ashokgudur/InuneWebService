@@ -52,7 +52,7 @@ namespace InTune.Controllers
 
         [Route("api/user/forgotpassword")]
         [HttpGet]
-        public HttpResponseMessage Register(string email)
+        public HttpResponseMessage ForgotPassword(string email)
         {
             try
             {
