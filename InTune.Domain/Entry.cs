@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace InTune.Domain
 {
@@ -25,11 +21,8 @@ namespace InTune.Domain
 
         public bool IsValid()
         {
-            if (string.IsNullOrWhiteSpace(Notes))
-                return false;
-
-            if (Quantity == 0 && Amount == 0)
-                return false;
+            if (TxnDate == DateTime.MinValue) return false;
+            if (Quantity == 0 && Amount == 0) return false;
 
             return true;
         }
