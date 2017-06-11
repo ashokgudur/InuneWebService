@@ -48,7 +48,7 @@ namespace InTune.Logic
             {
                 var dao = new UserDao(dbc);
                 var user = dao.ReadUserByEmail(email);
-                if (user == null)
+                if (user.IsNew)
                     throw new Exception("User with this email address was not found.");
                 try
                 {

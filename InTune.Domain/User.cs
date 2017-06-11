@@ -12,6 +12,8 @@ namespace InTune.Domain
         public string Password { get; set; }
         public DateTime CreatedOn { get; set; }
         public string SessionToken { get; set; }
+        public bool IsNew { get { return Id == 0; } }
+
 
         public User()
         {
