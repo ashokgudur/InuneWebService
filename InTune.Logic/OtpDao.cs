@@ -15,19 +15,18 @@ namespace InTune.Logic
         public void SendEmailOtp(string emailAddress, string otp)
         {
             var sql = "insert into EmailOtp (Email, Otp, OtpTimestamp) " +
-                      "values (@email, @otp, @otpTimestamp)";
+                      "values (@email, @otp, getdate())";
 
             var cmd = _dbc.CreateCommand(sql);
             _dbc.AddParameterWithValue(cmd, "@email", emailAddress);
             _dbc.AddParameterWithValue(cmd, "@otp", otp);
-            _dbc.AddParameterWithValue(cmd, "@otpTimestamp", DateTime.Now);
             cmd.ExecuteNonQuery();
         }
 
         public bool IsEmailOtpValid(string emailAddress, string otp)
         {
             const int otpValidityInMins = 15;
-            var sql = "select count * from EmailOtp where Email=@email and Otp=@otp " +
+            var sql = "select count(*) from EmailOtp where Email=@email and Otp=@otp " +
                       "and datediff(mi, OtpTimestamp, getdate()) <= @otpValidityInMins";
 
             var cmd = _dbc.CreateCommand(sql);
@@ -42,7 +41,7 @@ namespace InTune.Logic
         public void SendMobileOtp(string mobileNumber, string otp)
         {
             var sql = "insert into MobileOtp  (Mobile, Otp, OtpTimestamp) " +
-                      "values (@mobile, @otp, @otpTimestamp)";
+                      "values (@mobile, @otp, getdate())";
 
             var cmd = _dbc.CreateCommand(sql);
             _dbc.AddParameterWithValue(cmd, "@mobile", mobileNumber);
@@ -54,7 +53,7 @@ namespace InTune.Logic
         public bool IsMobileOtpValid(string mobileNumber, string otp)
         {
             const int otpValidityInMins = 15;
-            var sql = "select count * from MobileOtp where Mobile=@mobile and Otp=@otp " +
+            var sql = "select count(*) from MobileOtp where Mobile=@mobile and Otp=@otp " +
                       "and datediff(mi, OtpTimestamp, getdate()) <= @otpValidityInMins";
 
             var cmd = _dbc.CreateCommand(sql);

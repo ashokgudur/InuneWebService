@@ -53,7 +53,7 @@ namespace InTune.Logic
                 FromPassword = StringCipher.Decrypt("zNElhP2H2K9AVdqSolXa5g==", "SynergyUserFeedbackMailPassword"),
                 ToAddress = email,
                 ToAddressDisplayName = "Intune",
-                Subject = "Your Intune Password",
+                Subject = "Your intune verification code",
                 Body = string.Format("Your unique verification code for Intune is {0}. Thanks you.", otpNumber),
             };
         }

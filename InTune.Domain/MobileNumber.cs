@@ -34,7 +34,13 @@ namespace InTune.Domain
 
         public string FullNumberWithoutPlus
         {
-            get { return string.Format("{0}{1}", IsdCode.Substring(1), Number); }
+            get
+            {
+                if (IsdCode.Substring(0, 1) == "+")
+                    return string.Format("{0}{1}", IsdCode.Substring(1), Number);
+                else
+                    return string.Format("{0}{1}", IsdCode, Number);
+            }
         }
 
         public MobileNumber(string isdCode, string number)
@@ -56,7 +62,7 @@ namespace InTune.Domain
             if (_number.Length < 10)
                 throw new FormatException("Mobile number length must be 10 digits");
 
-            if (Regex.IsMatch(_number, @"^[0-9]{10}$"))
+            if (!Regex.IsMatch(_number, @"^[0-9]{10}$"))
                 throw new FormatException("Mobile number must contain only numbers");
         }
 
