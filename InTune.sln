@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.9
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InTune", "InTune\InTune.csproj", "{6339F3F6-EA5F-48F9-937F-3BCEB563E967}"
 EndProject
@@ -13,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InTune.Logic", "InTune.Logi
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{47A72734-6371-4C3A-9FD7-5F68B54344CC}"
 	ProjectSection(SolutionItems) = preProject
-		SolutionItems\IntuneScript.sql = SolutionItems\IntuneScript.sql
+		SulutionItems\IntuneDatabaseScript.sql = SulutionItems\IntuneDatabaseScript.sql
 	EndProjectSection
 EndProject
 Global

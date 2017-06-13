@@ -18,6 +18,7 @@ C:\Users\gw2ks\Documents\Visual Studio 2017\Projects\Intune\InTune\InTune\InTune
 C:\Users\gw2ks\Documents\Visual Studio 2017\Projects\Intune\InTune\InTune\InTune\obj\Debug\InTune.csprojResolveAssemblyReference.cache
 C:\Users\gw2ks\Documents\Visual Studio 2017\Projects\Intune\InTune\InTune\InTune\obj\Debug\InTune.dll
 C:\Users\gw2ks\Documents\Visual Studio 2017\Projects\Intune\InTune\InTune\InTune\obj\Debug\InTune.pdb
+C:\Users\gw2ks\Source\Repos\InuneWebService\InTune\bin\CountryISDCodes.json
 C:\Users\gw2ks\Source\Repos\InuneWebService\InTune\bin\InTune.dll.config
 C:\Users\gw2ks\Source\Repos\InuneWebService\InTune\bin\InTune.dll
 C:\Users\gw2ks\Source\Repos\InuneWebService\InTune\bin\InTune.pdb
@@ -31,6 +32,7 @@ C:\Users\gw2ks\Source\Repos\InuneWebService\InTune\bin\System.Web.Http.WebHost.d
 C:\Users\gw2ks\Source\Repos\InuneWebService\InTune\bin\InTune.Data.pdb
 C:\Users\gw2ks\Source\Repos\InuneWebService\InTune\bin\InTune.Domain.pdb
 C:\Users\gw2ks\Source\Repos\InuneWebService\InTune\bin\InTune.Logic.pdb
+C:\Users\gw2ks\Source\Repos\InuneWebService\InTune\bin\InTune.Logic.dll.config
 C:\Users\gw2ks\Source\Repos\InuneWebService\InTune\bin\Newtonsoft.Json.xml
 C:\Users\gw2ks\Source\Repos\InuneWebService\InTune\bin\System.Net.Http.Formatting.xml
 C:\Users\gw2ks\Source\Repos\InuneWebService\InTune\bin\System.Web.Http.xml

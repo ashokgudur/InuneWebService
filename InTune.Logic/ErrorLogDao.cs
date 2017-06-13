@@ -1,7 +1,4 @@
 ﻿using InTune.Data;
-using InTune.Domain;
-using System;
-using System.Data;
 
 namespace InTune.Logic
 {
