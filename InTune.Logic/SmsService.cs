@@ -26,9 +26,10 @@ namespace InTune.Logic
 
         public static void SendOtp(string mobileNumber, string message, string senderId, string otp)
         {
-            string sendOtpApiUri = @"sendotp.php";
-            string sendOtpApiUriString = string.Format("{0}?authkey={1}&mobile={2}&message={3}&sender={4}&otp={5}",
-                    sendOtpApiUri, authenticationKey, mobileNumber, message, senderId, otp);
+            string sendOtpApiName = @"sendotp.php";
+            string sendOtpApiParams = string.Format("?authkey={0}&mobile={1}&message={2}&sender={3}&otp={4}",
+                                      authenticationKey, mobileNumber, message, senderId, otp);
+            string sendOtpApiUriString = string.Format("{0}{1}", sendOtpApiName, sendOtpApiParams);
             var client = new HttpClient();
             client.BaseAddress = new Uri(otpServerUri);
             var response = client.GetAsync(sendOtpApiUriString).Result;
