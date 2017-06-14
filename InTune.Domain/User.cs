@@ -29,7 +29,7 @@ namespace InTune.Domain
             if (string.IsNullOrWhiteSpace(Mobile)) return false;
             if (string.IsNullOrWhiteSpace(Email)) return false;
             if (string.IsNullOrWhiteSpace(Password)) return false;
-            if (string.IsNullOrWhiteSpace(AtUserName)) return false;
+            //if (string.IsNullOrWhiteSpace(AtUserName)) return false;
 
             return true;
         }
