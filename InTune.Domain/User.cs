@@ -14,7 +14,6 @@ namespace InTune.Domain
         public string SessionToken { get; set; }
         public bool IsNew { get { return Id == 0; } }
 
-
         public User()
         {
         }
@@ -33,9 +32,6 @@ namespace InTune.Domain
                 return false;
 
             if (string.IsNullOrWhiteSpace(Email))
-                return false;
-
-            if (string.IsNullOrWhiteSpace(AtUserName))
                 return false;
 
             if (string.IsNullOrWhiteSpace(Password))

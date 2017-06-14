@@ -64,12 +64,13 @@ namespace InTune.Logic
 
         public void InsertUser()
         {
-            var sql = "insert into [User] (name, mobile, email, atUserName, password, createdOn) values (@userName, @userMobile, @userEmail, @userAtUserName, @userPassword, @userCreatedOn)";
+            var sql = "insert into [User] (name, mobile, email, atUserName, password, createdOn) " +
+                      "values (@userName, @userMobile, @userEmail, @userAtUserName, @userPassword, @userCreatedOn)";
 
             var cmd = _dbc.CreateCommand(sql);
             _dbc.AddParameterWithValue(cmd, "@userName", _user.Name);
             _dbc.AddParameterWithValue(cmd, "@userMobile", _user.Mobile);
-            _dbc.AddParameterWithValue(cmd, "@userEmail", _user.Email);
+            _dbc.AddParameterWithValue(cmd, "@userEmail", _user.Email.ToLower());
             _dbc.AddParameterWithValue(cmd, "@userAtUserName", _user.AtUserName);
             _dbc.AddParameterWithValue(cmd, "@userPassword", _user.Password);
             _dbc.AddParameterWithValue(cmd, "@userCreatedOn", _user.CreatedOn);

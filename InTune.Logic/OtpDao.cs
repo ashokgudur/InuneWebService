@@ -14,6 +14,7 @@ namespace InTune.Logic
 
         public void SendEmailOtp(string emailAddress, string otp)
         {
+            emailAddress = emailAddress.ToLower();
             var sql = "insert into EmailOtp (Email, Otp, OtpTimestamp) " +
                       "values (@email, @otp, getdate())";
 
@@ -25,7 +26,8 @@ namespace InTune.Logic
 
         public bool IsEmailOtpValid(string emailAddress, string otp)
         {
-            const int otpValidityInMins = 15;
+            emailAddress = emailAddress.ToLower();
+            const int otpValidityInMins = 180;
             var sql = "select count(*) from EmailOtp where Email=@email and Otp=@otp " +
                       "and datediff(mi, OtpTimestamp, getdate()) <= @otpValidityInMins";
 
