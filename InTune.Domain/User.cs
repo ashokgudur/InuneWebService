@@ -25,17 +25,11 @@ namespace InTune.Domain
             //TODO: Validate Mobile Number for its length, with country code included.
             //TODO: Validate AtUserName to prefix with '@' symobol. Must be included by user.
 
-            if (string.IsNullOrWhiteSpace(Name))
-                return false;
-
-            if (string.IsNullOrWhiteSpace(Mobile))
-                return false;
-
-            if (string.IsNullOrWhiteSpace(Email))
-                return false;
-
-            if (string.IsNullOrWhiteSpace(Password))
-                return false;
+            if (string.IsNullOrWhiteSpace(Name)) return false;
+            if (string.IsNullOrWhiteSpace(Mobile)) return false;
+            if (string.IsNullOrWhiteSpace(Email)) return false;
+            if (string.IsNullOrWhiteSpace(Password)) return false;
+            if (string.IsNullOrWhiteSpace(AtUserName)) return false;
 
             return true;
         }
