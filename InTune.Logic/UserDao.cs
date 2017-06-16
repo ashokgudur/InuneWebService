@@ -46,6 +46,17 @@ namespace InTune.Logic
             return idCcount > 0;
         }
 
+        public void ResetPassword(string email, string newPassword)
+        {
+            var sql = "update [User] set password=@userPassword " +
+                      "where email=@userEmail";
+
+            var cmd = _dbc.CreateCommand(sql);
+            _dbc.AddParameterWithValue(cmd, "@userEmail", _user.Email);
+            _dbc.AddParameterWithValue(cmd, "@userPassword", _user.Password);
+            cmd.ExecuteNonQuery();
+        }
+
         public void UpdateUser()
         {
             var sql = "update [User] set name=@userName, password=@userPassword, " +

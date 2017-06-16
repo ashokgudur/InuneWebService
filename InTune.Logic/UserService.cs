@@ -38,23 +38,12 @@ namespace InTune.Logic
             }
         }
 
-        public void ForgotPassword(string email)
+        public void ResetPassword(User user)
         {
             using (DbContext dbc = new DbContext())
             {
                 var dao = new UserDao(dbc);
-                var user = dao.ReadUserByEmail(email);
-                if (user.IsNew)
-                    throw new Exception("User with this email address was not found.");
-                try
-                {
-                    Emailer.SendMail(createMessage(email, user.Password));
-                }
-                catch (Exception ex)
-                {
-                    logError(dbc, ex.ToString());
-                    throw ex;
-                }
+                dao.ResetPassword(user.Email, user.Password);
             }
         }
 
@@ -110,6 +99,15 @@ namespace InTune.Logic
             {
                 var dao = new UserDao(dbc);
                 return dao.ReadUserById(userId);
+            }
+        }
+
+        public User ReadUserByEmail(string email)
+        {
+            using (DbContext dbc = new DbContext())
+            {
+                var dao = new UserDao(dbc);
+                return dao.ReadUserByEmail(email);
             }
         }
     }

@@ -41,7 +41,7 @@ namespace InTune.Controllers
             }
         }
 
-        [Route("api/user/userbyId")]
+        [Route("api/user/id")]
         [HttpGet]
         public User GetUserById(int userId)
         {
@@ -50,20 +50,32 @@ namespace InTune.Controllers
             return result;
         }
 
-        [Route("api/user/forgotpassword")]
+        [Route("api/user/signinid")]
         [HttpGet]
-        public HttpResponseMessage ForgotPassword(string email)
+        public User GetUserByEmail(string signinid)
+        {
+            var us = new UserService();
+            var result = us.ReadUserByEmail(signinid);
+            return result;
+        }
+
+        [Route("api/user/resetpassword")]
+        [HttpGet]
+        public HttpResponseMessage ResetPassword(User user)
         {
             try
             {
+                var os = new OtpService();
+                os.VerifyEmailOtp(user.Email, user.SessionToken);
+
                 var us = new UserService();
-                us.ForgotPassword(email);
+                us.ResetPassword(user);
                 return Request.CreateResponse(HttpStatusCode.OK);
             }
             catch (Exception ex)
             {
                 throw new HttpRequestException(
-                    string.Format("{0}. Cannot send your password.", ex.Message), ex);
+                    string.Format("{0}. Cannot reset password.", ex.Message), ex);
             }
         }
 
