@@ -1,5 +1,9 @@
-﻿using InTune.Logic;
+﻿using InTune.Domain;
+using InTune.Logic;
+using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
@@ -8,6 +12,42 @@ namespace InTune.Controllers
 {
     public class OtpController : ApiController
     {
+        [Route("api/country/isdcodes")]
+        [HttpGet]
+        public List<Country> GetCountryIsdCodes()
+        {
+            try
+            {
+                return JsonConvert.DeserializeObject<List<Country>>(
+                            File.ReadAllText("CountryISDCodes.json"));
+            }
+            catch (Exception ex)
+            {
+                throw new HttpRequestException("Cannot send ISD codes", ex);
+            }
+        }
+
+        [Route("api/country/isdcode/validate")]
+        [HttpGet]
+        public HttpResponseMessage ValidateCountryIsdCode(string isdCode)
+        {
+            try
+            {
+                var countries = JsonConvert.
+                            DeserializeObject<List<Country>>(
+                                File.ReadAllText("CountryISDCodes.json"));
+
+                if (!countries.Exists(c => c.IsdCode == isdCode))
+                    throw new ArgumentException("Invalid country ISD code");
+
+                return Request.CreateResponse(HttpStatusCode.OK);
+            }
+            catch (Exception ex)
+            {
+                throw new HttpRequestException("Cannot validate ISD code", ex);
+            }
+        }
+
         [Route("api/email/otp/send")]
         [HttpGet]
         public HttpResponseMessage SendEmailOtp(string emailAddress)
