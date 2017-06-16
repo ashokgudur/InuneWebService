@@ -60,7 +60,7 @@ namespace InTune.Controllers
         }
 
         [Route("api/user/resetpassword")]
-        [HttpGet]
+        [HttpPost]
         public HttpResponseMessage ResetPassword(User user)
         {
             try
