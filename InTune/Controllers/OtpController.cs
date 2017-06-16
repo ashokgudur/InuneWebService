@@ -18,8 +18,8 @@ namespace InTune.Controllers
         {
             try
             {
-                return JsonConvert.DeserializeObject<List<Country>>(
-                            File.ReadAllText("CountryISDCodes.json"));
+                var os = new OtpService();
+                return os.GetCountryIsdCodes();
             }
             catch (Exception ex)
             {
@@ -33,13 +33,8 @@ namespace InTune.Controllers
         {
             try
             {
-                var countries = JsonConvert.
-                            DeserializeObject<List<Country>>(
-                                File.ReadAllText("CountryISDCodes.json"));
-
-                if (!countries.Exists(c => c.IsdCode == isdCode))
-                    throw new ArgumentException("Invalid country ISD code");
-
+                var os = new OtpService();
+                os.ValidateCountryIsdCode(isdCode);
                 return Request.CreateResponse(HttpStatusCode.OK);
             }
             catch (Exception ex)

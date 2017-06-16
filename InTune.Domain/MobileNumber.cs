@@ -29,26 +29,24 @@ namespace InTune.Domain
 
         public string FullNumber
         {
-            get { return string.Format("{0}{1}", IsdCode, Number); }
+            get { return $"+{IsdCode}{Number}"; }
         }
 
         public string FullNumberWithoutPlus
         {
             get
             {
-                if (IsdCode.Substring(0, 1) == "+")
-                    return string.Format("{0}{1}", IsdCode.Substring(1), Number);
-                else
-                    return string.Format("{0}{1}", IsdCode, Number);
+                return $"{IsdCode}{Number}";
             }
         }
-
+        
         public MobileNumber(string isdCode, string number)
         {
-            _isdCode = (isdCode + "").Trim();
+            _isdCode = (isdCode + "").Trim().Replace("+", "");
             _number = (number + "").Trim();
 
             validateMobileNumber();
+            validateCountryCode();
         }
 
         private void validateMobileNumber()
@@ -71,7 +69,7 @@ namespace InTune.Domain
             var countries = JsonConvert.
                         DeserializeObject<List<Country>>(File.ReadAllText("CountryISDCodes.json"));
 
-            if (!countries.Exists(c => c.IsdCode == _isdCode))
+            if (!countries.Exists(c => c.IsdCode == $"+{_isdCode}"))
                 throw new ArgumentException("Invalid country ISD code");
         }
     }

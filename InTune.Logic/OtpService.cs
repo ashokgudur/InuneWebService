@@ -3,6 +3,9 @@ using InTune.Data;
 using InTune.Domain;
 using System.Security.Cryptography;
 using System.Text;
+using System.Collections.Generic;
+using Newtonsoft.Json;
+using System.IO;
 
 namespace InTune.Logic
 {
@@ -36,6 +39,24 @@ namespace InTune.Logic
                 var dao = new OtpDao(dbc);
                 dao.SendEmailOtp(email.Address, otpNumber);
             }
+        }
+
+        public void ValidateCountryIsdCode(string isdCode)
+        {
+            var countries = JsonConvert.
+                            DeserializeObject<List<Country>>(
+                                File.ReadAllText("CountryISDCodes.json"));
+
+            isdCode = isdCode.StartsWith("+") ? isdCode : $"+{isdCode}";
+
+            if (!countries.Exists(c => c.IsdCode == isdCode))
+                throw new ArgumentException("Invalid country ISD code");
+        }
+
+        public List<Country> GetCountryIsdCodes()
+        {
+            return JsonConvert.DeserializeObject<List<Country>>(
+            File.ReadAllText("CountryISDCodes.json"));
         }
 
         private void logError(DbContext dbc, string message)
