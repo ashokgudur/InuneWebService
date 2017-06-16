@@ -46,7 +46,7 @@ namespace InTune.Logic
             return idCcount > 0;
         }
 
-        public void ResetPassword(string email, string newPassword)
+        public void ResetPassword()
         {
             var sql = "update [User] set password=@userPassword " +
                       "where email=@userEmail";

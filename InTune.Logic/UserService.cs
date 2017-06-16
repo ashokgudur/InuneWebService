@@ -42,8 +42,8 @@ namespace InTune.Logic
         {
             using (DbContext dbc = new DbContext())
             {
-                var dao = new UserDao(dbc);
-                dao.ResetPassword(user.Email, user.Password);
+                var dao = new UserDao(dbc, user);
+                dao.ResetPassword();
             }
         }
 
