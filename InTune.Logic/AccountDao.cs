@@ -211,15 +211,17 @@ namespace InTune.Logic
 
             var result = new List<Account>();
             var sql = new StringBuilder();
-
-            sql.Append("select a.id, a.Name, au.Role, au.AddedOn, au.hasUnreadComments, count(c.id) comments from Account a inner join AccountUser au on a.id = au.AccountId left join AccountComment c on au.accountId=c.accountId and au.userId=c.toUserId ");
+            sql.Append("select a.id, a.Name, au.Role, au.AddedOn, au.hasUnreadComments, " +
+                       "count(c.id) comments from Account a " +
+                       "inner join AccountUser au on a.id = au.AccountId " +
+                       "left join AccountComment c on au.accountId=c.accountId " +
+                       "and au.userId=c.toUserId ");
 
             if (contactId != 0)
-            {
-                sql.Append(string.Format(" inner join AccountContact ac on a.id = ac.AccountId and ac.contactId={0} ", contactId));
-            }
+                sql.Append($" inner join AccountContact ac on a.id = ac.AccountId " +
+                           $"and ac.contactId={contactId} ");
 
-            sql.Append(string.Format(" where au.userId={0} ", userId));
+            sql.Append($" where au.userId={userId} ");
             sql.Append(" group by a.id, a.Name, au.Role, au.AddedOn, au.hasUnreadComments");
 
             var rdr = _dbc.ExecuteReader(sql.ToString());
