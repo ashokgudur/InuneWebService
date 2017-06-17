@@ -22,3 +22,17 @@ C:\Users\gw2ks\Source\Repos\InuneWebService\InTune.Logic\bin\Debug\System.Net.Ht
 C:\Users\gw2ks\Source\Repos\InuneWebService\InTune.Logic\obj\Debug\InTune.Logic.csprojResolveAssemblyReference.cache
 C:\Users\gw2ks\Source\Repos\InuneWebService\InTune.Logic\obj\Debug\InTune.Logic.dll
 C:\Users\gw2ks\Source\Repos\InuneWebService\InTune.Logic\obj\Debug\InTune.Logic.pdb
+C:\Users\gw2ks\Source\Repos\IntuneWebService\InTune.Logic\bin\Debug\InTune.Logic.dll.config
+C:\Users\gw2ks\Source\Repos\IntuneWebService\InTune.Logic\bin\Debug\InTune.Logic.dll
+C:\Users\gw2ks\Source\Repos\IntuneWebService\InTune.Logic\bin\Debug\InTune.Logic.pdb
+C:\Users\gw2ks\Source\Repos\IntuneWebService\InTune.Logic\bin\Debug\InTune.Data.dll
+C:\Users\gw2ks\Source\Repos\IntuneWebService\InTune.Logic\bin\Debug\InTune.Domain.dll
+C:\Users\gw2ks\Source\Repos\IntuneWebService\InTune.Logic\bin\Debug\Newtonsoft.Json.dll
+C:\Users\gw2ks\Source\Repos\IntuneWebService\InTune.Logic\bin\Debug\System.Net.Http.Formatting.dll
+C:\Users\gw2ks\Source\Repos\IntuneWebService\InTune.Logic\bin\Debug\InTune.Data.pdb
+C:\Users\gw2ks\Source\Repos\IntuneWebService\InTune.Logic\bin\Debug\InTune.Domain.pdb
+C:\Users\gw2ks\Source\Repos\IntuneWebService\InTune.Logic\bin\Debug\Newtonsoft.Json.xml
+C:\Users\gw2ks\Source\Repos\IntuneWebService\InTune.Logic\bin\Debug\System.Net.Http.Formatting.xml
+C:\Users\gw2ks\Source\Repos\IntuneWebService\InTune.Logic\obj\Debug\InTune.Logic.csprojResolveAssemblyReference.cache
+C:\Users\gw2ks\Source\Repos\IntuneWebService\InTune.Logic\obj\Debug\InTune.Logic.dll
+C:\Users\gw2ks\Source\Repos\IntuneWebService\InTune.Logic\obj\Debug\InTune.Logic.pdb

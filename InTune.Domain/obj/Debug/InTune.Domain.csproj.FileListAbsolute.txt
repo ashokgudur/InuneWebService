@@ -11,3 +11,10 @@ C:\Users\gw2ks\Source\Repos\InuneWebService\InTune.Domain\bin\Debug\Newtonsoft.J
 C:\Users\gw2ks\Source\Repos\InuneWebService\InTune.Domain\obj\Debug\InTune.Domain.dll
 C:\Users\gw2ks\Source\Repos\InuneWebService\InTune.Domain\obj\Debug\InTune.Domain.pdb
 C:\Users\gw2ks\Source\Repos\InuneWebService\InTune.Domain\obj\Debug\InTune.Domain.csprojResolveAssemblyReference.cache
+C:\Users\gw2ks\Source\Repos\IntuneWebService\InTune.Domain\bin\Debug\InTune.Domain.dll
+C:\Users\gw2ks\Source\Repos\IntuneWebService\InTune.Domain\bin\Debug\InTune.Domain.pdb
+C:\Users\gw2ks\Source\Repos\IntuneWebService\InTune.Domain\bin\Debug\Newtonsoft.Json.dll
+C:\Users\gw2ks\Source\Repos\IntuneWebService\InTune.Domain\bin\Debug\Newtonsoft.Json.xml
+C:\Users\gw2ks\Source\Repos\IntuneWebService\InTune.Domain\obj\Debug\InTune.Domain.csprojResolveAssemblyReference.cache
+C:\Users\gw2ks\Source\Repos\IntuneWebService\InTune.Domain\obj\Debug\InTune.Domain.dll
+C:\Users\gw2ks\Source\Repos\IntuneWebService\InTune.Domain\obj\Debug\InTune.Domain.pdb

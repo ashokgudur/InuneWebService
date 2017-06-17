@@ -117,27 +117,35 @@ namespace InTune.Logic
 
         public IList<Contact> ReadContacts(int userId)
         {
+            var sql = $"select c.id, c.name, c.email, c.mobile, c.address, c.createdOn, " +
+                      $"c.hasUnreadComments, u.id [uid], count(cc.id) comments from Contact " +
+                      $"c left join [User] u on c.email=u.email or c.mobile=u.mobile " +
+                      $"left join ContactComment cc on u.id=cc.byUserId or u.id=cc.toUserId " +
+                      $"where c.userId={userId} " +
+                      $"group by c.id, c.name, c.email, c.mobile, c.address, " +
+                      $"c.createdOn, c.hasUnreadComments, u.id";
+
             var result = new List<Contact>();
-            var sql = string.Format("select c.id, c.name, c.email, c.mobile, c.address, c.createdOn, c.hasUnreadComments, u.id [uid], count(cc.id) comments from Contact c left join [User] u on c.email=u.email left join ContactComment cc on u.id=cc.byUserId or u.id=cc.toUserId where c.userId={0} group by c.id, c.name, c.email, c.mobile, c.address, c.createdOn, c.hasUnreadComments, u.id", userId);
-            var rdr = _dbc.ExecuteReader(sql);
-            while (rdr.Read())
+            using (var rdr = _dbc.ExecuteReader(sql))
             {
-                result.Add(new Contact
+                while (rdr.Read())
                 {
-                    Id = Convert.ToInt32(rdr["id"]),
-                    UserId = userId,
-                    Name = rdr["Name"].ToString(),
-                    Email = rdr["Email"].ToString(),
-                    Mobile = rdr["Mobile"].ToString(),
-                    Address = rdr["Address"].ToString(),
-                    CreatedOn = Convert.ToDateTime(rdr["CreatedOn"]),
-                    ContactUserId = rdr["uid"] is DBNull ? 0 : Convert.ToInt32(rdr["uid"]),
-                    HasComments = Convert.ToInt32(rdr["comments"]) > 0,
-                    HasUnreadComments = Convert.ToBoolean(rdr["HasUnreadComments"]),
-                });
+                    result.Add(new Contact
+                    {
+                        Id = Convert.ToInt32(rdr["id"]),
+                        UserId = userId,
+                        Name = rdr["Name"].ToString(),
+                        Email = rdr["Email"].ToString(),
+                        Mobile = rdr["Mobile"].ToString(),
+                        Address = rdr["Address"].ToString(),
+                        CreatedOn = Convert.ToDateTime(rdr["CreatedOn"]),
+                        ContactUserId = rdr["uid"] is DBNull ? 0 : Convert.ToInt32(rdr["uid"]),
+                        HasComments = Convert.ToInt32(rdr["comments"]) > 0,
+                        HasUnreadComments = Convert.ToBoolean(rdr["HasUnreadComments"]),
+                    });
+                }
             }
 
-            rdr.Close();
             return result;
         }
 

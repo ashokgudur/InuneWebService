@@ -15,3 +15,10 @@ C:\Users\gw2ks\Source\Repos\InuneWebService\InTune.Data\bin\Debug\Newtonsoft.Jso
 C:\Users\gw2ks\Source\Repos\InuneWebService\InTune.Data\obj\Debug\InTune.Data.csprojResolveAssemblyReference.cache
 C:\Users\gw2ks\Source\Repos\InuneWebService\InTune.Data\obj\Debug\InTune.Data.dll
 C:\Users\gw2ks\Source\Repos\InuneWebService\InTune.Data\obj\Debug\InTune.Data.pdb
+C:\Users\gw2ks\Source\Repos\IntuneWebService\InTune.Data\bin\Debug\InTune.Data.dll
+C:\Users\gw2ks\Source\Repos\IntuneWebService\InTune.Data\bin\Debug\InTune.Data.pdb
+C:\Users\gw2ks\Source\Repos\IntuneWebService\InTune.Data\bin\Debug\InTune.Domain.dll
+C:\Users\gw2ks\Source\Repos\IntuneWebService\InTune.Data\bin\Debug\InTune.Domain.pdb
+C:\Users\gw2ks\Source\Repos\IntuneWebService\InTune.Data\obj\Debug\InTune.Data.csprojResolveAssemblyReference.cache
+C:\Users\gw2ks\Source\Repos\IntuneWebService\InTune.Data\obj\Debug\InTune.Data.dll
+C:\Users\gw2ks\Source\Repos\IntuneWebService\InTune.Data\obj\Debug\InTune.Data.pdb
