@@ -119,7 +119,7 @@ namespace InTune.Logic
         {
             var sql = $"select c.id, c.name, c.email, c.mobile, c.address, c.createdOn, " +
                       $"c.hasUnreadComments, u.id [uid], count(cc.id) comments from Contact " +
-                      $"c left join [User] u on c.email=u.email or c.mobile=u.mobile " +
+                      $"c left join [User] u on c.email=u.email or c.mobile=u.email " +
                       $"left join ContactComment cc on u.id=cc.byUserId or u.id=cc.toUserId " +
                       $"where c.userId={userId} " +
                       $"group by c.id, c.name, c.email, c.mobile, c.address, " +

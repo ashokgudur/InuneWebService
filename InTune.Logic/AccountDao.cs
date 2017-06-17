@@ -148,7 +148,7 @@ namespace InTune.Logic
         {
             var result = new List<Contact>();
             var sql = $"select c.id, c.name, u.id [uid] from Contact c " +
-                      $"left join [User] u on c.email=u.email or c.mobile=u.mobile " +
+                      $"left join [User] u on c.email=u.email or c.mobile=u.email " +
                       $"where c.userId={userId}";
 
             using (var rdr = _dbc.ExecuteReader(sql))
