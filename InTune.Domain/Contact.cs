@@ -33,11 +33,11 @@ namespace InTune.Domain
             if (string.IsNullOrWhiteSpace(Name))
                 return false;
 
-            if (string.IsNullOrWhiteSpace(Email))
-                return false;
+            //if (string.IsNullOrWhiteSpace(Email))
+            //    return false;
 
-            if (string.IsNullOrWhiteSpace(Mobile))
-                return false;
+            //if (string.IsNullOrWhiteSpace(Mobile))
+            //    return false;
 
             return true;
         }

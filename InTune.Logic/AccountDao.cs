@@ -147,9 +147,9 @@ namespace InTune.Logic
         public IList<Contact> ReadAccountSharedContacts(int userId, int accountId)
         {
             var result = new List<Contact>();
-            var sql = string.Format("select c.id, c.name, u.id [uid] " +
-                                    "from Contact c left join [User] u on c.email=u.email " +
-                                    "where c.userId={0} ", userId);
+            var sql = $"select c.id, c.name, u.id [uid] from Contact c " +
+                      $"left join [User] u on c.email=u.email or c.mobile=u.mobile " +
+                      $"where c.userId={userId}";
 
             using (var rdr = _dbc.ExecuteReader(sql))
             {

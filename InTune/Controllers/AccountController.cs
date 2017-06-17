@@ -124,7 +124,7 @@ namespace InTune.Controllers
             return result;
         }
 
-        [Route("api/account/account/sharedcontacts")]
+        [Route("api/account/sharedcontacts")]
         [HttpGet]
         public IEnumerable<Contact> GetAccountSharedContacts(int userId, int accountId)
         {
