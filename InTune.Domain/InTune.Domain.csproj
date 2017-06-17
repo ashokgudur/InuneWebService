@@ -65,9 +65,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="CountryISDCodes.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

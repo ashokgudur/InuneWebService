@@ -43,20 +43,22 @@ namespace InTune.Logic
 
         public void ValidateCountryIsdCode(string isdCode)
         {
-            var countries = JsonConvert.
-                            DeserializeObject<List<Country>>(
-                                File.ReadAllText("CountryISDCodes.json"));
-
             isdCode = isdCode.StartsWith("+") ? isdCode : $"+{isdCode}";
-
-            if (!countries.Exists(c => c.IsdCode == isdCode))
-                throw new ArgumentException("Invalid country ISD code");
+            using (DbContext dbc = new DbContext())
+            {
+                var dao = new OtpDao(dbc);
+                if (!dao.IsIsdCodeValid(isdCode))
+                    throw new Exception("Invalid country ISD code");
+            }
         }
 
         public List<Country> GetCountryIsdCodes()
         {
-            return JsonConvert.DeserializeObject<List<Country>>(
-            File.ReadAllText("CountryISDCodes.json"));
+            using (DbContext dbc = new DbContext())
+            {
+                var dao = new OtpDao(dbc);
+                return dao.GetCountryIsdCodes();
+            }
         }
 
         private void logError(DbContext dbc, string message)
@@ -118,11 +120,14 @@ namespace InTune.Logic
 
         public void VerifyMobileOtp(string isdCode, string mobileNumber, string otp)
         {
-            var mobile = new MobileNumber(isdCode, mobileNumber);
-
             using (DbContext dbc = new DbContext())
             {
+                var isd = $"+{(isdCode + "").Trim().Replace("+", "")}";
                 var dao = new OtpDao(dbc);
+                if (!dao.IsIsdCodeValid(isd))
+                    throw new Exception("Invalid country ISD code");
+
+                var mobile = new MobileNumber(isdCode, mobileNumber);
                 if (!dao.IsMobileOtpValid(mobile.FullNumber, otp))
                     throw new Exception("Invalid OTP. Please request new one");
             }

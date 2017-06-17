@@ -1,5 +1,7 @@
 ﻿using InTune.Data;
+using InTune.Domain;
 using System;
+using System.Collections.Generic;
 
 namespace InTune.Logic
 {
@@ -38,6 +40,36 @@ namespace InTune.Logic
             var result = cmd.ExecuteScalar();
             var count = Convert.ToInt32(result);
             return count > 0;
+        }
+
+        public bool IsIsdCodeValid(string isdCode)
+        {
+            var sql = "select count(*) from CountryIsdCode where IsdCode=@isdCode";
+            var cmd = _dbc.CreateCommand(sql);
+            _dbc.AddParameterWithValue(cmd, "@isdCode", isdCode);
+            var result = cmd.ExecuteScalar();
+            var count = Convert.ToInt32(result);
+            return count > 0;
+        }
+
+        public List<Country> GetCountryIsdCodes()
+        {
+            var result = new List<Country>();
+            var sql = "select * from CountryIsdCode";
+            using (var rdr = _dbc.ExecuteReader(sql))
+            {
+                while (rdr.Read())
+                {
+                    result.Add(new Country
+                    {
+                        Name = rdr["Name"].ToString(),
+                        Code = rdr["Code"].ToString(),
+                        IsdCode = rdr["IsdCode"].ToString(),
+                    });
+                }
+            }
+
+            return result;
         }
 
         public void SendMobileOtp(string mobileNumber, string otp)

@@ -1,7 +1,4 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.IO;
+﻿using System;
 using System.Text.RegularExpressions;
 
 namespace InTune.Domain
@@ -39,14 +36,13 @@ namespace InTune.Domain
                 return $"{IsdCode}{Number}";
             }
         }
-        
+
         public MobileNumber(string isdCode, string number)
         {
             _isdCode = (isdCode + "").Trim().Replace("+", "");
             _number = (number + "").Trim();
 
             validateMobileNumber();
-            validateCountryCode();
         }
 
         private void validateMobileNumber()
@@ -62,15 +58,6 @@ namespace InTune.Domain
 
             if (!Regex.IsMatch(_number, @"^[0-9]{10}$"))
                 throw new FormatException("Mobile number must contain only numbers");
-        }
-
-        private void validateCountryCode()
-        {
-            var countries = JsonConvert.
-                        DeserializeObject<List<Country>>(File.ReadAllText("CountryISDCodes.json"));
-
-            if (!countries.Exists(c => c.IsdCode == $"+{_isdCode}"))
-                throw new ArgumentException("Invalid country ISD code");
         }
     }
 }
